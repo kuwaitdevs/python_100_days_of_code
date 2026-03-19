@@ -14,6 +14,7 @@ game_won = False
 shadow_word = []
 unique_letters = []
 letters_guessed = []
+letters_used = []
 
 # create shadow word
 for char in word_to_guess:
@@ -90,6 +91,7 @@ while not game_won and trials > 0:
 
     print_hang_man(trials)
     print("Trials: ", trials)
+    print("Letters used: ", ", ".join(letters_used))
 
     print("Word to Guess: ", "".join(shadow_word))
     user_letter = str.lower(input("Guess a letter: "))
@@ -98,6 +100,7 @@ while not game_won and trials > 0:
         print("Letter already guessed, use another letter")
         continue;
 
+    letters_used.append(user_letter)
     letter_found = False
 
     for index, char in enumerate(word_to_guess):
